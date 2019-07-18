@@ -18,10 +18,12 @@ RUN chmod +x /usr/local/sbin/make_basebackup.sh
 COPY ./restore_command.sh /usr/local/sbin/restore_command.sh
 RUN chmod +x /usr/local/sbin/restore_command.sh
 
-COPY ./restore-entrypoint.sh /restore-entrypoint.sh
-RUN chmod +x /restore-entrypoint.sh
+COPY ./restore-entrypoint.sh /usr/local/sbin/restore-entrypoint.sh
+RUN chmod +x /usr/local/sbin/restore-entrypoint.sh
 
 COPY ./setup_archive.sh /docker-entrypoint-initdb.d/setup_archive.sh
 RUN chmod +x /docker-entrypoint-initdb.d/setup_archive.sh
 
-ENTRYPOINT ["/restore-entrypoint.sh"]
+ENTRYPOINT ["restore-entrypoint.sh"]
+
+CMD ["postgres"]
