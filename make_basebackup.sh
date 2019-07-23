@@ -2,4 +2,4 @@
 
 export PGHOST=localhost
 
-wal-g backup-push $1
+wal-g backup-push ${1:-$PGDATA}
