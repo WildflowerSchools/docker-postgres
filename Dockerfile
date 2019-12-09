@@ -1,4 +1,4 @@
-FROM postgres:11.6
+FROM postgres:12.1
 
 RUn apt-get update
 RUN apt-get install -y wget
